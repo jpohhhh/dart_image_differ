@@ -9,6 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_hooks: ^0.21.2
+  hooks_riverpod: ^2.6.1
+  # Not a fork, core package maintained by Telosnex.
+  libmonet:
+    git:
+      url: https://github.com/Telosnex/libmonet.git
+      ref: main
+  riverpod: ^2.6.1
+  super_drag_and_drop: ^0.9.1
 
 dev_dependencies:
   flutter_test:
