@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:dart_image_differ/misc/border.dart';
 import 'package:dart_image_differ/misc/constants.dart';
+import 'package:dart_image_differ/misc/on_open_file.dart';
 import 'package:dart_image_differ/widgets/drop_file_target.dart';
 import 'package:dart_image_differ/widgets/monet_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -7,19 +10,23 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:libmonet/theming/button_style.dart';
 import 'package:libmonet/theming/monet_theme.dart';
 
+typedef Uint8ListCallback = Function(Uint8List bytes);
+
 class ImageWell extends HookConsumerWidget {
-  final VoidCallback setImage;
+  final ImageProvider? imageProvider;
+  final Uint8ListCallback setImage;
   final String title;
 
   const ImageWell({
     super.key,
     required this.title,
+    required this.imageProvider,
     required this.setImage,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-        final captionStyle = Theme.of(context).textTheme.bodyLarge!.copyWith(
+    final captionStyle = Theme.of(context).textTheme.bodyLarge!.copyWith(
       color: MonetTheme.of(context).primary.fillText,
     );
 
@@ -35,19 +42,37 @@ class ImageWell extends HookConsumerWidget {
               SizedBox(height: VerticalPadding.amount),
               Text(title, style: captionStyle),
               SizedBox(height: VerticalPaddingHalf.amount),
-              MonetElevatedButton(
-                shadowColor: MonetTheme.of(context).primary.colorHover,
-                icon: null,
-                label: Text('Add Image'),
-                onPressed: () {},
-                outlineColorWhenNoShadow: MonetTheme.of(
-                  context,
-                ).tertiary.colorHover,
-                statesController: null,
-                style: filledButtonBackgroundIsColor(
-                  MonetTheme.of(context).tertiary,
+              if (imageProvider != null)
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  color: Colors.red,
+                  child: Image(
+                    image: imageProvider!,
+                    fit: BoxFit.contain,
+                    height: 200,
+                  ),
                 ),
-              ),
+
+              if (imageProvider == null)
+                MonetElevatedButton(
+                  shadowColor: MonetTheme.of(context).primary.colorHover,
+                  icon: null,
+                  label: Text('Add Image'),
+                  onPressed: () {
+                    onOpenFile().then((bytes) {
+                      if (bytes != null) {
+                        setImage(bytes);
+                      }
+                    });
+                  },
+                  outlineColorWhenNoShadow: MonetTheme.of(
+                    context,
+                  ).tertiary.colorHover,
+                  statesController: null,
+                  style: filledButtonBackgroundIsColor(
+                    MonetTheme.of(context).tertiary,
+                  ),
+                ),
             ],
           ),
         ),

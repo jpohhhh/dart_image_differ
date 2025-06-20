@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dart_image_differ/misc/border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -112,23 +114,16 @@ class DropFileTarget extends HookConsumerWidget {
   }
 }
 
-
-Future<void> onPerformDropHandler(
+Future<Uint8List?> onPerformDropHandler(
   BuildContext context,
   WidgetRef ref,
   PerformDropEvent event,
 ) async {
-  final items = event.session.items;
-  if (items.isEmpty) {
-    return Future.value();
-  }
+  return null;
 
   // TODO:
   // final imageBytes = (await bytesForImageDropItems(
   //   imageItems,
   // )).nonNulls.toList();
   // final docIds = await docIdsForDropItems(docManager, docItems);
-
-
-
 }
