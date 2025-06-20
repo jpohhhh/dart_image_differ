@@ -84,7 +84,7 @@ class OverlayComparisonSection extends HookConsumerWidget {
                     Row(
                       children: [
                         Text(
-                          'Show Diff Overlay',
+                          'Show Diff',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: MonetTheme.of(context).primary.text,
