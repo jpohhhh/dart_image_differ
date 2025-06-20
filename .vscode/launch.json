@@ -1,0 +1,31 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "dart_image_differ",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "dart_image_differ (web hot reload)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "chrome", "--web-experimental-hot-reload"]
+    },
+    {
+      "name": "dart_image_differ (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "dart_image_differ (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}
