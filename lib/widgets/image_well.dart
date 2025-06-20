@@ -42,37 +42,30 @@ class ImageWell extends HookConsumerWidget {
               SizedBox(height: VerticalPadding.amount),
               Text(title, style: captionStyle),
               SizedBox(height: VerticalPaddingHalf.amount),
-              if (imageProvider != null)
-                Container(
-                  margin: EdgeInsets.all(8.0),
-                  color: Colors.red,
-                  child: Image(
-                    image: imageProvider!,
-                    fit: BoxFit.contain,
-                    height: 200,
-                  ),
-                ),
 
-              if (imageProvider == null)
-                MonetElevatedButton(
-                  shadowColor: MonetTheme.of(context).primary.colorHover,
-                  icon: null,
-                  label: Text('Add Image'),
-                  onPressed: () {
-                    onOpenFile().then((bytes) {
-                      if (bytes != null) {
-                        setImage(bytes);
-                      }
-                    });
-                  },
-                  outlineColorWhenNoShadow: MonetTheme.of(
-                    context,
-                  ).tertiary.colorHover,
-                  statesController: null,
-                  style: filledButtonBackgroundIsColor(
-                    MonetTheme.of(context).tertiary,
-                  ),
+              MonetElevatedButton(
+                shadowColor: MonetTheme.of(context).primary.colorHover,
+                icon: null,
+                label: imageProvider == null ? Text('Add') : Text('Change'),
+                onPressed: () {
+                  onOpenFile().then((bytes) {
+                    if (bytes != null) {
+                      setImage(bytes);
+                    }
+                  });
+                },
+                outlineColorWhenNoShadow: MonetTheme.of(
+                  context,
+                ).tertiary.colorHover,
+                statesController: null,
+                style: filledButtonBackgroundIsColor(
+                  MonetTheme.of(context).tertiary,
                 ),
+              ),
+
+              if (imageProvider != null)
+                Image(image: imageProvider!, fit: BoxFit.contain, height: 320),
+              SizedBox(height: VerticalPadding.amount),
             ],
           ),
         ),
