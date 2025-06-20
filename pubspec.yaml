@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   flutter_hooks: ^0.21.2
   hooks_riverpod: ^2.6.1
-  # Not a fork, core package maintained by Telosnex.
   libmonet:
     git:
       url: https://github.com/Telosnex/libmonet.git

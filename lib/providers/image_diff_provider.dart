@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:dart_image_differ/image/image_rgba.dart';
-import 'package:dart_image_differ/misc/hex.dart';
 import 'package:dart_image_differ/providers/image_a_provider.dart';
 import 'package:dart_image_differ/providers/image_b_provider.dart';
 import 'package:flutter/material.dart';

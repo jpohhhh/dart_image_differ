@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:dart_image_differ/misc/border.dart';
 import 'package:dart_image_differ/misc/constants.dart';
 import 'package:dart_image_differ/misc/on_open_file.dart';
@@ -9,8 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:libmonet/theming/button_style.dart';
 import 'package:libmonet/theming/monet_theme.dart';
-
-typedef Uint8ListCallback = Function(Uint8List bytes);
 
 class ImageWell extends HookConsumerWidget {
   final ImageProvider? imageProvider;
@@ -31,6 +27,7 @@ class ImageWell extends HookConsumerWidget {
     );
 
     return DropFileTarget(
+      onImageDropped: setImage,
       child: Container(
         decoration: ShapeDecoration(
           color: MonetTheme.of(context).primary.fill,
