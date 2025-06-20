@@ -17,9 +17,9 @@ class HomeScreen extends HookConsumerWidget {
     final imageBProvider = ref.watch(imageBImageProviderProvider);
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(padding),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(padding),
           child: Column(
             children: [
               // Image upload wells
