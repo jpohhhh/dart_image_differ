@@ -1,7 +1,7 @@
 name: dart_image_differ
-description: "A new Flutter project."
+description: "An accurate image diff app.
 publish_to: 'none'
-version: 0.1.0
+version: 1.0
 
 environment:
   sdk: ^3.8.1
